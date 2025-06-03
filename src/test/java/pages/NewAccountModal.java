@@ -1,5 +1,6 @@
 package pages;
 
+import dto.Account;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -30,27 +31,25 @@ public class NewAccountModal extends BasePage {
         return this;
     }
 
-    public NewAccountModal createAccount(String name, String phone, String fax,
-                              String rating, String accountNum, String website,
-                              String type, String ownership, String industry,
-                              String sicCode,  boolean isTMS, boolean isVip,
-                              String BillingStreet, String ShippingStreet, String ShippingCountry) {
-        new Input(driver, "Account Name").write(name);
-        new Input(driver, "Phone").write(phone);
-        new Input(driver, "Fax").write(fax);
-        new Picklist(driver, "Rating").select(rating);
-        new Input(driver, "Account Number").write(accountNum);
-        new Input(driver, "Website").write(website);
-        new Picklist(driver, "Type").select(type);
-        new Picklist(driver, "Ownership").select(ownership);
-        new Picklist(driver, "Industry").select(industry);
-        new Input(driver, "SIC Code").write(sicCode);
-        new CheckBox(driver, "TeachMeSkills").setChecked(isTMS);
-        new CheckBox(driver, "VIP Client").setChecked(isVip);
-        new TextArea(driver, "Billing Street").writeArea(BillingStreet);
-        new TextArea(driver, "Shipping Street").writeArea(ShippingStreet);
-        new Input(driver, "Shipping Country").write(ShippingCountry);
+    public NewAccountModal createAccount(Account account) {
+
+        new Input(driver, "Account Name").write(account.getName());
+        new Input(driver, "Phone").write(account.getPhone());
+        new Input(driver, "Fax").write(account.getFax());
+        new Picklist(driver, "Rating").select(account.getRating());
+        new Input(driver, "Account Number").write(account.getAccountNum());
+        new Input(driver, "Website").write(account.getWebsite());
+        new Picklist(driver, "Type").select(account.getType());
+        new Picklist(driver, "Ownership").select(account.getOwnership());
+        new Picklist(driver, "Industry").select(account.getIndustry());
+        new Input(driver, "SIC Code").write(account.getSicCode());
+        new CheckBox(driver, "TeachMeSkills").setChecked(account.isTms());
+        new CheckBox(driver, "VIP Client").setChecked(account.isVip());
+        new TextArea(driver, "Billing Street").writeArea(account.getBillingStreet());
+        new TextArea(driver, "Shipping Street").writeArea(account.getShippingStreet());
+        new Input(driver, "Shipping Country").write(account.getShippingCountry());
         return this;
+
     }
 
     public HomePage clickSaveButton() {
