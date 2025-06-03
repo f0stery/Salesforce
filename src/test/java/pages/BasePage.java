@@ -9,11 +9,11 @@ public abstract class BasePage {
 
     public static final String BASE_URL = "https://tms9-dev-ed.develop.my.salesforce.com";
     WebDriver driver;
-    WebDriverWait waiting;
+    WebDriverWait wait;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        waiting = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }
 
     public abstract BasePage open();

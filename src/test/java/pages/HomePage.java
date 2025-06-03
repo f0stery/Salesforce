@@ -6,20 +6,23 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends BasePage {
 
+    private static final String HOME_URL = "https://tms9-dev-ed.develop.lightning.force.com/lightning/" +
+            "setup/SetupOneHome/home";
+    private static final By BUTTON_MENU = By.xpath("//div[contains(@class, 'slds-icon-waffle')]");
+
     public HomePage(WebDriver driver) {
         super(driver);
     }
 
     @Override
     public HomePage open() {
-        driver.get("https://tms9-dev-ed.develop.lightning.force.com/lightning/setup/SetupOneHome/home");
+        driver.get(HOME_URL);
         return this;
     }
 
     @Override
     public HomePage isPageOpened() {
-        waiting.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//div[contains(@class, 'slds-icon-waffle')]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(BUTTON_MENU));
         return this;
     }
 }

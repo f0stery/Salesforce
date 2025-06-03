@@ -25,7 +25,7 @@ public class LoginPage extends BasePage {
 
     @Override
     public LoginPage isPageOpened() {
-        waiting.until(ExpectedConditions.visibilityOfElementLocated(LOGIN_BUTTON));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(LOGIN_BUTTON));
         return this;
     }
 

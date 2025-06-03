@@ -27,7 +27,7 @@ public class NewAccountModal extends BasePage {
 
     @Override
     public NewAccountModal isPageOpened() {
-        waiting.until(ExpectedConditions.visibilityOfElementLocated(ACCOUNT_SAVE_BUTTON));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(ACCOUNT_SAVE_BUTTON));
         return this;
     }
 
@@ -49,7 +49,6 @@ public class NewAccountModal extends BasePage {
         new TextArea(driver, "Shipping Street").writeArea(account.getShippingStreet());
         new Input(driver, "Shipping Country").write(account.getShippingCountry());
         return this;
-
     }
 
     public HomePage clickSaveButton() {
