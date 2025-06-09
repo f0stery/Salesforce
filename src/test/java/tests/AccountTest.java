@@ -1,27 +1,29 @@
 package tests;
 
+import dto.Account;
 import org.testng.annotations.Test;
-
-import static pages.NewAccountModal.*;
 
 public class AccountTest extends BaseTest {
 
     @Test
     public void checkCreateAccount() {
-        loginPage.open();
-        loginPage.login("tborodich@tms.sandbox", "Password002!");
-        waitLocator(getBurgerMenu());
-        newAccountModal.openUrlCreateAccount();
-        waitLocator(getAccountSaveButton());
-        newAccountModal.createAccount("TSM",
+        Account account = new Account("TSM",
                 "+37291322322", "+37291322322",
                 "Cold", "2",
                 "teachmeskills.com", "Other",
                 "Other", "Telecommunications",
-                "SIC", false,
+                "SIC", true,
                 true, "Brothers Lizukovi",
-                "1-23-2", "Belarus"
-                );
-        newAccountModal.clickSaveButton();
+                "1-23-2", "Belarus");
+        loginPage.open()
+                .isPageOpened()
+                .login("tborodich@tms.sandbox", "Password002!")
+                .isPageOpened();
+        accountListPage.open()
+                .isPageOpened()
+                .clickNew()
+                .isPageOpened()
+                .createAccount(account)
+                .clickSaveButton();
     }
 }

@@ -1,16 +1,15 @@
 package tests;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
+import pages.AccountListPage;
+import pages.HomePage;
 import pages.LoginPage;
 import pages.NewAccountModal;
 import utils.TestListener;
@@ -27,9 +26,8 @@ public class BaseTest {
     SoftAssert softAssert;
     NewAccountModal newAccountModal;
     LoginPage loginPage;
-    WebDriverWait wait;
-    String user = System.getProperty("user");
-    String password = System.getProperty("password");
+    HomePage homePage;
+    AccountListPage accountListPage;
 
     @Parameters({"browser"})
     @BeforeMethod (alwaysRun = true, description = "Открытие браузера")
@@ -54,11 +52,8 @@ public class BaseTest {
         softAssert = new SoftAssert();
         newAccountModal = new NewAccountModal(driver);
         loginPage = new LoginPage(driver);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-    }
-
-    public void waitLocator(By locator) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        homePage = new HomePage(driver);
+        accountListPage = new AccountListPage(driver);
     }
 
     @AfterMethod(alwaysRun = true, description = "Закрытие браузера")
