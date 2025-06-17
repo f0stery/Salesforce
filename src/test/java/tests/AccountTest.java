@@ -12,15 +12,8 @@ public class AccountTest extends BaseTest {
                 .phone("+375296163232")
                 .isVip(true)
                 .isTms(true)
+                .website("lms.teachmeskills.com")
                 .build();
-        Account account = new Account("TSM",
-                "+37291322322", "+37291322322",
-                "Cold", "2",
-                "teachmeskills.com", "Other",
-                "Other", "Telecommunications",
-                "SIC", true,
-                true, "Brothers Lizukovi",
-                "1-23-2", "Belarus");
         loginPage.open()
                 .isPageOpened()
                 .login("tborodich@tms.sandbox", "Password002!")
@@ -29,7 +22,7 @@ public class AccountTest extends BaseTest {
                 .isPageOpened()
                 .clickNew()
                 .isPageOpened()
-                .createAccount(account)
+                .createAccount(account1)
                 .clickSaveButton();
     }
 }

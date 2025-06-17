@@ -12,18 +12,30 @@ public class Account {
     private String name;
     @Builder.Default
     private String phone = "";
-    private String fax;
+    @Builder.Default
+    private String fax = "";
     @Builder.Default
     private String rating = "--None--";
-    private String accountNum;
-    private String website;
-    private String type;
-    private String ownership;
-    private String industry;
-    private String sicCode;
-    private boolean isTms;
-    private boolean isVip;
-    private String billingStreet;
-    private String shippingStreet;
-    private String shippingCountry;
+    @Builder.Default
+    private String accountNum = "";
+    @Builder.Default
+    private String website = "";
+    @Builder.Default
+    private String type = "--None--";
+    @Builder.Default
+    private String ownership = "--None--";
+    @Builder.Default
+    private String industry = "--None--";
+    @Builder.Default
+    private String sicCode = "";
+    @Builder.Default
+    private boolean isTms = false;
+    @Builder.Default
+    private boolean isVip = false;
+    @Builder.Default
+    private String billingStreet = "";
+    @Builder.Default
+    private String shippingStreet = "";
+    @Builder.Default
+    private String shippingCountry = "";
 }

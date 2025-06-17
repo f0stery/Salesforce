@@ -20,13 +20,13 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
-        System.out.printf("======================================== FINISHED TEST %s Duration: %ss ========================================%n", iTestResult.getName(),
+        log.info("======================================== FINISHED TEST {} Duration: {} ========================================%n", iTestResult.getName(),
                 getExecutionTime(iTestResult));
     }
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
-        System.out.printf("======================================== FAILED TEST %s Duration: %ss ========================================%n", iTestResult.getName(),
+        log.error("======================================== FAILED TEST {} Duration: {} ========================================%n", iTestResult.getName(),
                 getExecutionTime(iTestResult));
         ITestContext context = iTestResult.getTestContext();
         WebDriver driver = (WebDriver) context.getAttribute("driver");
@@ -35,7 +35,7 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestSkipped(ITestResult iTestResult) {
-        System.out.printf("======================================== SKIPPING TEST %s ========================================%n", iTestResult.getName());
+        log.warn("======================================== SKIPPING TEST {} ========================================%n", iTestResult.getName());
     }
 
     @Override
