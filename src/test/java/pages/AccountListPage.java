@@ -8,7 +8,7 @@ public class AccountListPage extends BasePage {
 
     private static final String ACCOUNT_LIST_URL = "https://tms9-dev-ed.develop.lightning.force.com/" +
             "lightning/o/Account/list";
-    private static final By BUTTON_NEW = By.cssSelector("[title='New'");
+    private static final By BUTTON_NEW = By.xpath("//*[@title='New']");
 
     public AccountListPage(WebDriver driver) {
         super(driver);

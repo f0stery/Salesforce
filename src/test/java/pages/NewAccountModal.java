@@ -1,14 +1,18 @@
 package pages;
 
 import dto.Account;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 import wrappers.CheckBox;
 import wrappers.Input;
 import wrappers.Picklist;
 import wrappers.TextArea;
 
+@Log4j2
 public class NewAccountModal extends BasePage {
 
     private static final String ACCOUNT_CREATE_URL =
@@ -27,12 +31,17 @@ public class NewAccountModal extends BasePage {
 
     @Override
     public NewAccountModal isPageOpened() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(ACCOUNT_SAVE_BUTTON));
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(ACCOUNT_SAVE_BUTTON));
+        } catch (TimeoutException e) {
+            log.error(e.getMessage());
+            Assert.fail("Page isn't opened");
+        }
         return this;
     }
 
     public NewAccountModal createAccount(Account account) {
-
+        log.info("Creating account '{}'", account.getName());
         new Input(driver, "Account Name").write(account.getName());
         new Input(driver, "Phone").write(account.getPhone());
         new Input(driver, "Fax").write(account.getFax());
